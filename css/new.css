@@ -4,6 +4,18 @@
 .download-ticket .modal-dialog-scrollable .modal-body {
   overflow-y: auto;
 }
+.mini_success .pdfButton {
+  color: #FFF;
+  text-align: center;
+  font-family: gilroy;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 5px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.00) 100%), #F67905;
+  display: inline-block;
+  padding: 12px;
+  width: 195px;
+}
 /* pdf-doc */
 
 .pdf-doc .banner {
@@ -158,7 +170,7 @@
 
 /* pdf-doc */
 
-@media print {
+@media screen {
   .pdf-doc .banner {
     margin-bottom: 7px;
   }

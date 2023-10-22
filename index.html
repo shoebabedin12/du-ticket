@@ -262,7 +262,9 @@
 						<div class="mini_success oflow-hd">
 							<div class="mini_success_wrapper oflow-hd">
 									<p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described</p>
-									<a href="" data-toggle="modal" data-target="#staticBackdrop" role="button">Download Ticket</a>
+									<!-- <a href="" data-toggle="modal" data-target="#staticBackdrop" role="button">Download Ticket</a> -->
+									<button class="pdfButton" onclick="convertHTMLToPDF()">Download Ticket General</button>
+									<button class="pdfButton" onclick="convertHTMLToPDF2()">Download Ticket DU</button>
 							</div>
 						</div>
 					</div>
@@ -287,7 +289,7 @@
 		</div>
 
 <!-- download ticket general -->
-		<div class="pdf-doc oflow-hd general">
+		<div class="pdf-doc oflow-hd" id="general">
 			<div class="banner">
 				<img src="./images/ticket-upper-part.png" class="img-fluid" alt="">
 			</div>
@@ -365,7 +367,7 @@
 			<div class="footer-bg"></div>
 		</div>
 <!-- download ticket du_zone -->
-		<div class="pdf-doc oflow-hd du_zone">
+		<div class="pdf-doc oflow-hd du_zone" id="du">
 			<div class="banner">
 				<img src="./images/ticket-upper-part.png" class="img-fluid" alt="">
 			</div>
@@ -467,34 +469,15 @@
 							<div class="container">
 								<div class="row">
 									<div class="col-12">
-										<div class="user-details">
-										
-												<div>
-													<p>Name: Ahmed Faysal Emon</p>
-													<p>Email: EMONGFX@GMAIL.COM</p>
-													<p>Phone: 01708043778</p>
-												</div>
-												<div class="text-center">
-													<h1>2nd November, 2023</h1>
-													<p>Thursday | Gate Opening: 1:00 PM | Event Starts: 4:00 PM</p>
-													<p>Central Field, Dhaka University</p>
-												</div>
-											
-										</div>
+									
 										<div class="concert-ticket">
 											<div class="content">
-												<h2>e-Ticket of DU Nobin Boron Concert</h2>
-												<p>The entry pass is not transferable and not for sale. The organizers are not liable in any way
-													for any unauthorized and unethical purchase/sale or transfer of the pass by a third party.</p>
-													<div class="terms-condition">
+												<div class="terms-condition">
 														<h3>Terms and Conditions:</h3>
 														<p>Thank you for register a ticket to "DU Nobin Boron Concert". Please read the following 
 															terms and conditions,  as they constitute a legal agreement between you and 
 															Dhaka University, the event organizer.</p>
 													</div>
-											</div>
-											<div class="qr-code">
-												<img src="./images/qr-code.png" alt="" class="img-fluid">
 											</div>
 										</div>
 										<div class="ticket-policy">
@@ -1022,7 +1005,47 @@
 			============================================= -->
 			<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+			<!-- Include html2canvas library -->
+			<script src="./js/jspdf.min.js"></script>
+<script src="./js/html2canvas.min.js"></script>
+<script src="./js/html2pdf.bundle.js"></script>
 			<script src="js/all-js.js"></script>
+
+
+			  <script>
+				function convertHTMLToPDF() {
+    var elementHTML = document.getElementById("general");
+
+    html2canvas(elementHTML).then(function (canvas) {
+        var imgData = canvas.toDataURL('image/png');
+        var pdf = new jsPDF('p', 'mm', 'a4');
+        
+        // Calculate the aspect ratio to maintain the original image proportions
+        var imgWidth = 190; // target width in the PDF document (you can adjust this)
+        var imgHeight = canvas.height * imgWidth / canvas.width;
+
+        pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight); // Adjust the position (10, 10) as needed
+        pdf.save('General.pdf');
+    });
+}
+				function convertHTMLToPDF2() {
+    var elementHTML = document.getElementById("du");
+
+    html2canvas(elementHTML).then(function (canvas) {
+        var imgData = canvas.toDataURL('image/png');
+        var pdf = new jsPDF('p', 'mm', 'a4');
+        
+        // Calculate the aspect ratio to maintain the original image proportions
+        var imgWidth = 190; // target width in the PDF document (you can adjust this)
+        var imgHeight = canvas.height * imgWidth / canvas.width;
+
+        pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight); // Adjust the position (10, 10) as needed
+        pdf.save('du.pdf');
+    });
+}
+
+			</script>
+			    
 			
 		</body>
 	</html>
