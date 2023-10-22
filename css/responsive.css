@@ -1,0 +1,64 @@
+/** ------------------------------------------------------------------
+							Wrapper Screen
+------------------------------------------------------------------ **/
+@media only screen and (min-width: 2000px) {
+
+}
+@media only screen and (max-width: 1200px) {
+
+}
+
+
+/** ------------------------------------------------------------------
+							Tab Screen
+------------------------------------------------------------------ **/
+@media only screen and (max-width: 991px) {
+
+}
+
+/** ------------------------------------------------------------------
+							Mobile Screen
+------------------------------------------------------------------ **/
+@media only screen and (max-width: 768px ) {
+.mini_header_area {
+	padding: 25px 0;
+}
+.home_hero_area .slick-dots {
+	bottom: 10px;
+}
+.mini_ticket_title h2 {
+	font-size: 15px;
+}
+.mini_success_area,
+.mini_form_area,
+.mini_ticket_area {
+	margin-top: 17px;
+}
+.mini_ticket_wrapper {
+	text-align: center;
+}
+.mini_home_single_event_details2 {
+	display: block;
+}
+.mini_home_single_event_details2 .home_single_event_details2_shortbox {
+	margin-bottom: 15px;
+}
+.mini_home_single_event_details2 .home_single_event_details2_shortbox:last-child {
+	margin-bottom: 0;
+}
+.single_tab ul li a {
+	font-size: 13px;
+	padding-bottom: 6px;
+}
+.single_tab ul li {
+	margin-right: 15px;
+}
+.mini_footer_widget_copyright {
+	padding: 35px 0;
+}
+}
+
+
+@media only screen and (max-width: 500px ) {
+
+}
