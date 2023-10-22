@@ -21,6 +21,7 @@
 			<!--[if IE]>  
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>  
 			<![endif]-->
+
 		</head>
 		<body>
 		<div class="header_space oflow-hd"></div>
@@ -255,8 +256,7 @@
 							<div class="mini_success_wrapper oflow-hd">
 									<p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described</p>
 									<!-- <a href="" >Download Ticket</a> -->
-									 <button class="pdfButton" onclick="convertHTMLToPDF()">Download Ticket</button>
-									<!--<button class="pdfButton" onclick="convertHTMLToPDF2()">Download Ticket DU</button> -->
+									 <button id="pdfButton" class="pdfButton">Download Ticket</button>
 							</div>
 						</div>
 					</div>
@@ -997,45 +997,36 @@
 			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 			<!-- Include html2canvas library -->
 			<script src="./js/jspdf.min.js"></script>
+
 <script src="./js/html2canvas.min.js"></script>
 <script src="./js/html2pdf.bundle.js"></script>
+
 			<script src="js/all-js.js"></script>
 
 
-			  <script>
-				function convertHTMLToPDF() {
-    var elementHTML = document.getElementById("general");
 
-    html2canvas(elementHTML).then(function (canvas) {
-        var imgData = canvas.toDataURL('image/png');
-        var pdf = new jsPDF('p', 'mm', 'a4');
-        
-        // Calculate the aspect ratio to maintain the original image proportions
-        var imgWidth = 190; // target width in the PDF document (you can adjust this)
-        var imgHeight = canvas.height * imgWidth / canvas.width;
+			<script>
+				var button = document.getElementById("pdfButton");
+				var makepdf = document.getElementById("general");
+				var opt = {
+				  margin: 0,
+				  filename: "pdfcreated.pdf",
+				  html2canvas: {
+					scale: 2,
+				  },
+				  
+				  jsPDF: {
+					unit: "mm",
+					format: "a4",
+					orientation: "portrait",
+				  },
+				};
+				button.addEventListener("click", function () {
+				  html2pdf().set(opt).from(makepdf).save();
+				});
+			  </script>
 
-        pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight); // Adjust the position (10, 10) as needed
-        pdf.save('General.pdf');
-    });
-}
-				function convertHTMLToPDF2() {
-    var elementHTML = document.getElementById("du");
-
-    html2canvas(elementHTML).then(function (canvas) {
-        var imgData = canvas.toDataURL('image/png');
-        var pdf = new jsPDF('p', 'mm', 'a4');
-        
-        // Calculate the aspect ratio to maintain the original image proportions
-        var imgWidth = 190; // target width in the PDF document (you can adjust this)
-        var imgHeight = canvas.height * imgWidth / canvas.width;
-
-        pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight); // Adjust the position (10, 10) as needed
-        pdf.save('du.pdf');
-    });
-}
-
-			</script>
-			    
+    
 			
 		</body>
 	</html>
